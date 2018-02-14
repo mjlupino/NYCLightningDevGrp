@@ -1,0 +1,69 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable" access="global" >
+    
+    <!-- Define Attributes on Top  --> 
+    <aura:attribute name="newUserReq" type="Object" />
+    <aura:attribute name="simpleNewUserReq" type="Object"/>
+    <aura:attribute name="newUserReqError" type="String"/>
+    <force:recordData aura:id="NewUserReqCreate"
+        recordId="{!v.recordId}"
+        fields="Name,Title__c,Phone__c,Email__c,Sales__c,Marketing__c,Service__c"
+        layoutType="FULL"
+        targetRecord="{!v.newUserReq}"
+        targetFields="{!v.simpleNewUserReq}"
+        targetError="{!v.newUserReqError}"
+        />
+    <!-- Init the handler -->    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.newUserReqError))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.newUserReqError}
+            </ui:message>
+        </div>
+    </aura:if>
+
+    
+        <lightning:card >
+        <aura:set attribute="title">
+         <lightning:icon iconName="standard:user" size="large" alternativeText="User Icon"/>
+            Request New User!
+        </aura:set>
+        <aura:set attribute="footer">
+            <lightning:badge label="footer"/>
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button variant="brand" label="Save" iconName="utility:save" iconPosition="left" onclick="{! c.handleClick }" />
+    		<lightning:button label="Cancel" iconName="utility:close" iconPosition="left"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            Please fill out the form below to begin your new user request
+            
+            <lightning:input aura:id="userField" name="myname" label="Your Name"  value="{!v.simpleNewUserReq.Name}" />
+            
+            <lightning:input aura:id="userField" name="title"  label="Your Title" value="{!v.simpleNewUserReq.Title__c}"/>
+            
+            <lightning:input aura:id="userField" name="tel" type="tel" label="Phone" 
+                             pattern="^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$"
+                     		 messageWhenPatternMismatch="The phone number must contain 7, 10, or 11 digits. Hyphens are optional."
+		                     value="{!v.simpleNewUserReq.Phone__c}" required="true"/>
+            
+            <lightning:input aura:id="userField" name="email" type="email" label="Your Email" value="{!v.simpleNewUserReq.Email__c}" />
+
+ <fieldset>
+ 	<lightning:input type="checkbox" label="Sales" 
+                     name="Dept1" value="{!v.simpleNewUserReq.Sales__c}" aura:id="departments"/>
+        <lightning:input type="checkbox" label="Marketing" 
+            name="Dept2" value="{!v.simpleNewUserReq.Marketing__c}" aura:id="departments"/>
+        <lightning:input type="checkbox" label="Service" 
+            name="Dept3" value="{!v.simpleNewUserReq.Service__c}" aura:id="departments"/>
+    </fieldset>
+            
+        </p>
+    </lightning:card>
+    <div align="center">
+    <lightning:button variant="brand" label="Save" iconName="utility:save" iconPosition="left" onclick="{!c.handleSave}" />
+    <lightning:button label="Cancel" iconName="utility:close" iconPosition="left" onclick="{!c.handleCancel}"/>
+    </div>
+</aura:component>

@@ -1,0 +1,14 @@
+({
+    init: function (cmp, event, helper) {
+    //display column names here for reference
+    //Name,Title__c,Phone__c,Email__c,Sales__c,Marketing__c,Service__c
+
+    cmp.set('v.mycolumns', [
+                {label: 'Name', fieldName: 'Name', type: 'text'},
+        		{label: 'Title', fieldName: 'Title__c'},
+        		{label: 'Phone', fieldName: 'Phone__c', type: 'phone'},
+        		{label: 'Email', fieldName: 'Email__c', type: 'Email'},
+            ]);
+        helper.getData(cmp);
+    }
+})

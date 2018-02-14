@@ -1,0 +1,8 @@
+public with sharing class UserRequestController{ 
+    @AuraEnabled 
+    public static List<User_Request__c> getUserRequests() { 
+        List<User_Request__c> UsrReqs = [SELECT Name,Title__c,Phone__c,Email__c,Sales__c,Marketing__c,Service__c FROM User_Request__c]; 
+        return UsrReqs ; 
+    }
+    
+}

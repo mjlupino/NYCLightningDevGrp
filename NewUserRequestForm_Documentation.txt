@@ -1,0 +1,13 @@
+<aura:documentation>
+    <aura:description>
+        <p>An <code>c:DevGrpLightning</code> component represents a form for entering in new user requests</p>
+        <!--Provide markup here if needed such code samples using the pre tag-->
+        <pre>This is some super exciting lightning code. </pre>
+    </aura:description>
+    <aura:example name="DevGrpLightningExample" ref="c:DevGrpLightning" label="Using the c:DevGrpLightning Component">
+	<p>This example shows a simple setup of <code>myComponent</code>.</p>
+    </aura:example>
+    <aura:example name="DevGrpLightningExample2" ref="c:DevGrpLightning2" label="Customizing the c:DevGrpLightning Component">
+       <p>This example shows how you can customize <code>myComponent</code>.</p>
+    </aura:example>
+</aura:documentation>

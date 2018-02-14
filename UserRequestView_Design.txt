@@ -1,0 +1,3 @@
+<design:component label="DevGrpLightningRetrieve">
+        <design:attribute name="subject" label="Subject" description="Help Text for this app appears here" />
+</design:component>
